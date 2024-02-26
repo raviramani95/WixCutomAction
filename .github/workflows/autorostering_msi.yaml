@@ -23,7 +23,7 @@ jobs:
 
     - name: Build MSI
       working-directory: ${{github.workspace}}
-      run: dotnet build AutoRosteringSetup.sln -c Release -p:Platform=x64 -p:Build_Number=21901 -p:VisualStudioVersion=17.0
+      run: dotnet build AutoRosteringSetup.sln -c Release -p:Platform=x64 -p:Build_Number=21901 -p:VisualStudioVersion=17.0 
   
     # - name: Copy files to root and create AR folder
     #   run: |
