@@ -15,24 +15,6 @@ jobs:
     - uses: actions/checkout@v3
       with:
         ref: ${{ github.event.pull_request.head.ref }}
-    
-    - name: convert to utf-8
-      working-directory: ./WEB/Backend/ESolve/ESolve
-      run: sed -i '1s/^\xEF\xBB\xBF//' migrations.sql
-
-    - name: Publish setup artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: migrations.sql
-        path: ${{github.workspace}}/WEB/Backend/ESolve/ESolve/migrations.sql
-
-    - name: Copy files to root and create AR folder
-      run: |
-        mkdir AutoRostering
-        mkdir AutoRostering/api
-        cp -r ./WEB/Backend/ESolve/ESolve/bin/Release/net6.0/* ./AutoRostering/api/
-        cp -r ./WEB/Backend/ESolve/ESolve/migrations.sql ./AutoRostering/
-        cp -r ./WEB/Frontend/dist/* ./AutoRostering/
         
     - name: setup .net core
       uses: actions/setup-dotnet@v3
